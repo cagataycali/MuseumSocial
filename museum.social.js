@@ -1,9 +1,21 @@
+/**
+ * Tarihi eser collection'u
+ * Başlık,
+ * İçerik
+ * Fotoğraflar -> Bir tarihi eserin birden fazla fotoğrafı olabilir.
+ * Beaconlar -> Bir tarihi eserin etrafında birden fazla beacon olabilir.
+ * @type {Mongo.Collection}
+ */
+TarihiEser = new Mongo.Collection('TarihiEser');
+Fotograf = new Mongo.Collection('TarihiEser');
+Beacon = new Mongo.Collection('Beacon');
+
+
+
 if (Meteor.isClient) {
 
   // Set default page id is one!
   Session.set('pageId',1);
-  Session.set('itemId',1);
-  Session.set('messageId',1);
 
 
 // Initialize app
