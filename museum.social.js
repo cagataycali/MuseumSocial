@@ -13,33 +13,15 @@ if (Meteor.isClient) {
   });
 
 
-  var myMessages = myApp.messages('.messages', {
-    autoLayout: true
-  });
-
 // If we need to use custom DOM library, let's save it to $$ variable:
   var $$ = Dom7;
-
 
   Template.content.helpers({
     'state':function (i) {
       return Session.get('pageId') == i;
-    },
-    'message': function (i) {
-      return Session.get('messageId') == i;
     }
   });
 
-
-  $(document).on('click','.mesaj', function () {
-    Session.set('messageId',2);
-  });
-
-  Template.main.helpers({
-    'item':function (i) {
-      return Session.get('itemId') == i;
-    }
-  });
 
   // Tab links
   $(document).on('click','.tab-link', function () {
@@ -60,18 +42,10 @@ if (Meteor.isClient) {
     Session.set('pageId',link.attr('id'));
   });
 
-  $(document).on('deleted','.swipeout', function () {
-    console.log("Swipeout deleted");
-  });
-
-
-  $(document).on('opened','.swipeout', function () {
-    console.log("Swipeout opened");
-  });
 
   $(document).on('click','.mark', function () {
     //İtem ıd set!
-    Session.set('itemId',2);
+    Session.set('pageId',2);
 
   });
 
