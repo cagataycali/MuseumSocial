@@ -23,3 +23,5 @@ nobutakaoshiro:framework7-ios-material
 accounts-ui
 standard-minifier-css
 standard-minifier-js
+aldeed:collection2
+dburles:collection-helpers

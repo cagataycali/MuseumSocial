@@ -7,8 +7,36 @@
  * @type {Mongo.Collection}
  */
 TarihiEser = new Mongo.Collection('TarihiEser');
-Fotograf = new Mongo.Collection('TarihiEser');
-Beacon = new Mongo.Collection('Beacon');
+Fotograflar = new Mongo.Collection('Fotograflar');
+Beaconlar = new Mongo.Collection('Beaconlar');
+
+
+TarihiEser.helpers({
+
+  fotograflar: function () {
+    return Fotograflar.find({eserId:this._id});
+  },
+  beaconlar: function () {
+    return Beaconlar.find({eserId:this._id});
+  }
+
+});
+
+Beaconlar.helpers({
+
+  eser: function () {
+    return TarihiEser.findOne({_id:eserId});
+  }
+
+});
+
+Fotograflar.helpers({
+
+  eser: function () {
+    return TarihiEser.findOne({_id:eserId});
+  }
+
+});
 
 
 
@@ -16,6 +44,7 @@ if (Meteor.isClient) {
 
   // Set default page id is one!
   Session.set('pageId',1);
+  Session.set('eserId',0);
 
 
 // Initialize app
@@ -34,14 +63,41 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.main.helpers({
+    'eserler': function () {
+      return TarihiEser.find();
+    }
+  });
+
+  Template.info.helpers({
+    'eser': function () {
+      // Eser ıd değerini sessiondan alalım
+      var eserId = Session.get('eserId');
+      //console.log(eserId);
+      return TarihiEser.findOne(eserId);
+    }
+  });
+
 
   // Tab links
   $(document).on('click','.tab-link', function () {
 
-    //İtem ıd set!
-    Session.set('itemId',1);
-
     var link = $(this);
+
+    eserId = link.attr('data-id');
+
+
+    if ( eserId == null)
+    {
+      //console.log("eser id boş");
+      Session.set('eserId',0);
+    }
+    else
+    {
+      //console.log(eserId);
+      Session.set('eserId',eserId);
+    }
+
 
     var links =  $('.tab-link');
 
@@ -54,12 +110,6 @@ if (Meteor.isClient) {
     Session.set('pageId',link.attr('id'));
   });
 
-
-  $(document).on('click','.mark', function () {
-    //İtem ıd set!
-    Session.set('pageId',2);
-
-  });
 
   console.log("Merhaba client!");
 }

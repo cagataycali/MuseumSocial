@@ -1,20 +1,42 @@
 <template name="main">
 <div class="list-block inset media-list">
     <div class="content-block-title">Yakınındakiler</div>
+    <!--todo main foto-->
+    <!--todo enlem boylam-->
+    <!--todo beaconlarının uuid değerlerine göre benim konumum hangisine 1 mt'den yakınsa mt yerine orası gelecek, uzaklık diye bir field olup sessionda tutulabilir-->
+    <!--todo : bu eser direkt olarak eserlerin hepsinden gelmeycek, yakınımdaki beaconun eserid değeri direkt olarak bu eseri bana görüntületecek.-->
+    {{#each eserler}}
+
         <ul>
-            <li id="4" class="4 tab-link">
+            <li id="2" data-id="{{_id}}" class="2 tab-link">
                 <a href="#" class="item-link item-content">
-                    <div class="item-media"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55235,1jpg.png?0" width="90"></div>
+                    <div class="item-media"><img src="{{url}}" width="90"></div>
                     <div class="item-inner">
                         <div class="item-title-row">
-                            <div class="item-title">Ahmet Gazi Camii </div>
+                            <div class="item-title">{{baslik}} </div>
                             <div class="item-after">5 mt</div>
                         </div>
                         <div class="item-subtitle">Tarihi yapılar/Aydın</div>
-                        <div class="item-text">Aydın Çine’ye bağlı Eski Çine Köyü’nde bulunan Ahmet Gazi Camii (Ulu Cami) Miladi 1308 yılında ...</div>
+                        <div class="item-text">{{icerik}}</div>
                     </div>
                 </a>
             </li>
         </ul>
+    {{/each}}
+        <!--<ul>-->
+            <!--<li id="2" class="2 tab-link">-->
+                <!--<a href="#" class="item-link item-content">-->
+                    <!--<div class="item-media"><img src="http://localhost/muze/3.png" width="90"></div>-->
+                    <!--<div class="item-inner">-->
+                        <!--<div class="item-title-row">-->
+                            <!--<div class="item-title">Ahmet Gazi Camii </div>-->
+                            <!--<div class="item-after">5 mt</div>-->
+                        <!--</div>-->
+                        <!--<div class="item-subtitle">Tarihi yapılar/Aydın</div>-->
+                        <!--<div class="item-text">Aydın Çine’ye bağlı Eski Çine Köyü’nde bulunan Ahmet Gazi Camii (Ulu Cami) Miladi 1308 yılında ...</div>-->
+                    <!--</div>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
     </div>
 </template>

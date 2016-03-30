@@ -3,42 +3,46 @@
 
     <div class="content-block">
         <div class="row">
-            <div class="col-50">
+            <div class="col-100">
                 <div class="row">
-                    <div class="col-50"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55235,1jpg.png?0" width="90" height="90"></div>
-                    <div class="col-50"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55236,2jpg.png?0" width="90" height="90"></div>
+                {{#each eser.fotograflar}}
+                    <div class="col-25"><img src="{{url}}" width="90" height="90"></div>
+                {{/each }}
                 </div>
             </div>
-            <div class="col-50">
-                <div class="row">
-                    <div class="col-50"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55237,3jpg.png?0" width="90" height="90"></div>
-                    <div class="col-50"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55238,4jpg.png?0" width="90" height="90"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-50">
-                <div class="row">
-                    <div class="col-50"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55239,5jpg.png?0" width="90" height="90"></div>
-                    <div class="col-50"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55240,6jpg.png?0" width="90" height="90"></div>
-                </div>
-            </div>
+
+
         </div>
     </div>
     <!--Todo photos can be open popup-->
 
     <div class="card">
-        <div class="card-header">Ahmet Gazi Camii </div>
+        <div class="card-header">{{eser.baslik}} </div>
         <div class="card-content">
             <div class="card-content-inner" style="word-wrap: break-word">
 
-                Aydın Çine’ye bağlı Eski Çine Köyü’nde bulunan Ahmet Gazi Camii (Ulu Cami) Miladi 1308 yılında (XIV.yy’ın ilk yarısı) inşa edilmiştir. İnşaatı hakkında ayrıntılı bilgiler bulunmamaktadır. Tarihi belgelere bakıldığında Cami’nin Menteşoğlu Orhan Bey döneminde, oğlu Hızır Bey tarafından yaptırılmış olması kuvvetle muhtemeldir. Ancak XIV. yy’ın ikinci yarısında Cami Menteşoğlu İbrahim Bey’in oğlu Ahmet Gazi Bey (1366’da Menteşe Bey’i oldu, 1390 yılında vefat etti.) tarafından iyileştirilerek tekrar canlandırılmıştır. (Babası İbrahim Bey’in ölümü M.S. 1358’dir.)
-                Ahmet Gazi Camii Döneminin en geniş kubbeli camisidir. Aydın İli’nin bilinen en eski camisidir. Aynı zamanda Batı Anadolu’da ki ilk Türk Ulu Eserlerinden olup tam kare teşkil eden sahası 400 m2 ve duvarları 1,70 metre kalınlığındadır. Cami hemen her yönü ile tipik beylik dönemi mimarisi özelliklerini taşımaktadır. Duvarları kesme taşlar üzerine moloz taşlardan inşa edilmiştir. Birincisi XIV. yy’ın ikinci yarısında Ahmet Gazi Bey tarafından olmak üzere çok sayıda onarım görmüştür. Vakıf eseri olması nedeniyle Vakıflar Genel müdürlüğü bu onarım işlerini yaptırmıştır. Çok onarım görmesi cami mimarisinde değişikliklere neden olmuştur. Özellikle dış cephelerde bu değişimi çıplak gözle bile görüp ayırt etmek çok kolaydır.
-                Kare planlı ve tek hacimlidir. Dışarıda son cemaat bölümü ve revak tarzı yapıları yoktur. Dönemine göre 17 metre gibi oldukça geniş çaplı bir kubbe yapısı vardır. Kubbesi kasnak üzerinde üst üste iki kademeli ve on iki kenarlıdır. Bu kubbesi ile Beylikler Dönemi’nden Osmanlı Dönemi mimariye geçiş özelliği yansıtmaktadır. Pencereler; üst bölümde her yönde bir tane olmak üzere dört tane, alt bölümde ise dokuz tanedir (Batıda üç, diğer cephelerde ikişer). Biri kuzeyde, diğeri doğuda olmak üzere iki giriş kapısı vardır. Cami’nin ilk yapıldığı dönemde doğu kısmında bulunan bitişik nizamlı “Merdiven Minare” ise yakın zamanda yıkılarak ortadan kaldırılmıştır. Beylik döneminde pek uygulama alanı bulamayan bu tür merdiven minarenin ortadan kaldırılması ise ilginç bir durumdur. Kuzey girişin üst kısmında mahfil yer almaktadır. Ahşap direkler üzerine yapılmış mahfilin iki yanında bulunan merdivenler üstüne çıkmak için kullanılmaktadır. Mahfilin orta kısmında güneye doğru bir çıkıntı bulunmaktadır. Cami’nin ahşap oyma minberi ajurlu oymalar halinde işlenmiş kündekari geçmeler halinde yerleştirilmiştir. Kenarlara stilize bitki motifleri, korkuluklara ayetler oyulmuştur. Kullanılan desenlerde çok çeşitli geometrik şekiller yer almıştır. Cami’nin iç duvarları gösterişten uzak, oldukça sade bir sıva ile kaplanmıştır.
-            </div>
+                {{eser.icerik}}
+
+             </div>
         </div>
         <div class="card-footer">Tarihi Yerler / Aydın </div>
     </div>
+
+
+    <div class="card">
+        <div class="card-header">Aygıtlar </div>
+        <div class="card-content">
+            <div class="card-content-inner" style="word-wrap: break-word">
+
+                {{#each eser.beaconlar}}
+                    {{uuid}} <br>
+                {{/each }}
+
+            </div>
+        </div>
+        <div class="card-footer">Çağatay ÇALI 2016 Tüm hakları saklıdır.</div>
+    </div>
+
 
 
 </template>
