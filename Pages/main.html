@@ -1,43 +1,55 @@
 <template name="main">
-    <div class="list-block inset">
+<div class="list-block inset media-list">
 
         {{#if item  1 }}
-            <!--Foreach loop-->
+            <div class="content-block-title">Yakınındakiler</div>
+
             <ul>
-                <!-- Additional "swipeout" class on li -->
-                <li class="swipeout">
-                    <div class="swipeout-content">
-                        <a href="#" class="item-content item-link">
+                    <li class="mark">
+                        <a href="#" class="item-link item-content">
+                            <div class="item-media"><img src="http://www.aydinkulturturizm.gov.tr/Resim/55235,1jpg.png?0" width="90"></div>
                             <div class="item-inner">
                                 <div class="item-title-row">
-                                    <div class="item-title"> 1+1 Full eşyalı kampüs çevresinde ...</div>
-                                    <div class="item-after"> 400 TL</div>
+                                    <div class="item-title">Ahmet Gazi Camii </div>
+                                    <div class="item-after">5 mt</div>
                                 </div>
+                                <div class="item-subtitle">Tarihi yapılar/Aydın</div>
+                                <div class="item-text">Aydın Çine’ye bağlı Eski Çine Köyü’nde bulunan Ahmet Gazi Camii (Ulu Cami) Miladi 1308 yılında ...</div>
                             </div>
                         </a>
-                    </div>
-                    <div class="swipeout-actions-left">
-                        <a href="#" class="swipeout-delete swipeout-overswipe" data-confirm="Gerçekten bu ilanı görmek istemiyor musun?" data-confirm-title="Emin misin?">Sil</a>
-                    </div>
-                    <div class="swipeout-actions-right">
-                        <a href="#" class="mark bg-orange">Detay</a>
-                        <a href="#" class="swipeout-overswipe bg-green reply" data-confirm="Emlak sahibi ile konuşmak ister misin?" data-confirm-title="Süper!">Konuş!</a>
-                    </div>
-                </li> <!-- Additional "swipeout" class on li -->
-            </ul>
+                    </li>
+                </ul>
 
         {{/if}}
 
         {{#if item  2 }}
             <!--item content-->
-            item content
+            <div class="content-block-title">Responsive Grid</div>
+            <div class="content-block">
+                <p>Grid cells have different size on Phone/Tablet</p>
+                <div class="row">
+                    <div class="col-100 tablet-50">.col-100.tablet-50</div>
+                    <div class="col-100 tablet-50">.col-100.tablet-50</div>
+                </div>
+                <div class="row">
+                    <div class="col-50 tablet-25">.col-50.tablet-25</div>
+                    <div class="col-50 tablet-25">.col-50.tablet-25</div>
+                    <div class="col-50 tablet-25">.col-50.tablet-25</div>
+                    <div class="col-50 tablet-25">.col-50.tablet-25</div>
+                </div>
+                <div class="row">
+                    <div class="col-100 tablet-40">.col-100.tablet-40</div>
+                    <div class="col-50 tablet-60">.col-50.tablet-60</div>
+                    <div class="col-50 tablet-66">.col-50.tablet-66</div>
+                    <div class="col-100 tablet-33">.col-100.tablet-33</div>
+                </div>
+            </div>
         {{/if}}
 
         {{#if item  3 }}
             <!--chat!-->
             chat!
         {{/if}}
-
 
     </div>
 </template>

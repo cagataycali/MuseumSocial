@@ -1,0 +1,42 @@
+<template name="content">
+
+    <!--MAIN-->
+    {{#if state  1 }}
+        <div class="pages navbar-through toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content  pull-to-refresh-content" data-ptr-distance="55">
+                    <!-- Default pull to refresh layer-->
+                    <div class="pull-to-refresh-layer">
+                        <div class="preloader"></div>
+                        <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    {{> main}}
+                </div>
+            </div>
+        </div>
+
+    {{/if}}
+
+    <!--INFO-->
+    {{#if state  4 }}
+        <div class="pages navbar-through toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content  pull-to-refresh-content" data-ptr-distance="55">
+
+
+                    <!-- Default pull to refresh layer-->
+                    <div class="pull-to-refresh-layer">
+                        <div class="preloader"></div>
+                        <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    {{>info}}
+                </div>
+            </div>
+        </div>
+    {{/if}}
+
+</template>

@@ -44,12 +44,8 @@ if (Meteor.isClient) {
   // Tab links
   $(document).on('click','.tab-link', function () {
 
-    //Mesajlar sayfasına dönsün.
-    Session.set('messageId',1);
-
     //İtem ıd set!
     Session.set('itemId',1);
-
 
     var link = $(this);
 
@@ -62,7 +58,6 @@ if (Meteor.isClient) {
 
 
     Session.set('pageId',link.attr('id'));
-    //console.log(link.attr('id'));
   });
 
   $(document).on('deleted','.swipeout', function () {
@@ -79,13 +74,6 @@ if (Meteor.isClient) {
     Session.set('itemId',2);
 
   });
-
-  $(document).on('click','.reply', function () {
-    //İtem ıd set!
-    Session.set('itemId',3);
-
-  });
-
 
   console.log("Merhaba client!");
 }
