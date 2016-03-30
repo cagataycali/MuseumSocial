@@ -1,0 +1,43 @@
+<template name="main">
+    <div class="list-block inset">
+
+        {{#if item  1 }}
+            <!--Foreach loop-->
+            <ul>
+                <!-- Additional "swipeout" class on li -->
+                <li class="swipeout">
+                    <div class="swipeout-content">
+                        <a href="#" class="item-content item-link">
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title"> 1+1 Full eşyalı kampüs çevresinde ...</div>
+                                    <div class="item-after"> 400 TL</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swipeout-actions-left">
+                        <a href="#" class="swipeout-delete swipeout-overswipe" data-confirm="Gerçekten bu ilanı görmek istemiyor musun?" data-confirm-title="Emin misin?">Sil</a>
+                    </div>
+                    <div class="swipeout-actions-right">
+                        <a href="#" class="mark bg-orange">Detay</a>
+                        <a href="#" class="swipeout-overswipe bg-green reply" data-confirm="Emlak sahibi ile konuşmak ister misin?" data-confirm-title="Süper!">Konuş!</a>
+                    </div>
+                </li> <!-- Additional "swipeout" class on li -->
+            </ul>
+
+        {{/if}}
+
+        {{#if item  2 }}
+            <!--item content-->
+            item content
+        {{/if}}
+
+        {{#if item  3 }}
+            <!--chat!-->
+            chat!
+        {{/if}}
+
+
+    </div>
+</template>
