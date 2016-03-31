@@ -140,7 +140,7 @@ if (Meteor.isClient) {
 
         Session.set('pageId',2);
 
-    };
+    });
 
 
   Template.info.helpers({
