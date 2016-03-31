@@ -291,7 +291,7 @@ if (Meteor.isCordova) {
 
         function startNearestBeaconDisplayTimer()
         {
-            mNearestBeaconDisplayTimer = setInterval(displayNearestBeacon, 1000);
+            mNearestBeaconDisplayTimer = setInterval(displayNearestBeacon, 500);
         }
 
         function stopNearestBeaconDisplayTimer()
