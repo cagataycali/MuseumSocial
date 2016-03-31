@@ -195,24 +195,24 @@ if (Meteor.isCordova) {
         // TODO: Update with uuid/major/minor for your beacons.
         // You can add as many beacons as you want to use.
 
-        var mRegions = Session.get('beacons');
-        //var mRegions =
-        //    [
-        //        {
-        //            id: 'cagatay',
-        //            uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
-        //            major: 5,
-        //            minor: 1000
-        //        },
-        //        {
-        //            id: 'kemal',
-        //            uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
-        //            major: 5,
-        //            minor: 1000
-        //        }
-        //
-        //
-        //    ];
+        //var mRegions = Session.get('beacons');
+        var mRegions =
+            [
+                {
+                    id: 'cagatay',
+                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
+                    major: 5,
+                    minor: 1000
+                },
+                {
+                    id: 'kemal',
+                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
+                    major: 5,
+                    minor: 1000
+                }
+
+
+            ];
 
         // Region data is defined here. Mapping used is from
         // region id to a string. You can adapt this to your
