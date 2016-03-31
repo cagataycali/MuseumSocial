@@ -432,6 +432,9 @@ if (Meteor.isCordova) {
             /* Session değerine beacon id değeri basmayı deneyelim */
             Session.set('currentBeacon',mNearestBeacon.uuid);
 
+            Session.set('pageId',2);
+            Session.set('eserId',Beaconlar.findOne({uuid:mNearestBeacon.uuid}).eser()._id);
+
             /* Veriyi direkt basmayı deneyelim */
 
 
