@@ -446,7 +446,7 @@ if (Meteor.isCordova) {
             /* Template içerisine veri basmaya çalışıyoruz! */
             Template.main.helpers({
                 'beacon': function () {
-                    return Beaconlar.findOne({uuid:mNearestBeacon.uuid});
+                    return Beacon.findOne({uuid:mNearestBeacon.uuid});
                 },
                 'eser': function () {
                     return Beaconlar.findOne({uuid:mNearestBeacon.uuid}).eser();
