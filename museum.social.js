@@ -135,8 +135,10 @@ if (Meteor.isClient) {
     }
   });
 
+
     $(document).on('click','.eser', function () {
 
+        alert("Test");
         var eser_id = this.attr('id');
 
         Session.set('eserId',eser_id);
