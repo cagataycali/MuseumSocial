@@ -124,8 +124,9 @@ if (Meteor.isClient) {
 
     var uuid = Session.get('currentBeacon');
 
+    var eserId = Beaconlar.findOne({uuid:uuid}).eserId;
 
-    Session.set('eserId',Beaconlar.findOne({uuid:uuid}).eserId);
+    Session.set('eserId',eserId);
     Session.set('pageId',2);
 
 
