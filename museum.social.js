@@ -279,12 +279,13 @@ if (Meteor.isCordova) {
         function onAppToBackground()
         {
             mAppInBackground = true;
-            stopNearestBeaconDisplayTimer();
+            startNearestBeaconDisplayTimer();
+            displayRegionEvents();
         }
 
         function onAppToForeground()
         {
-            mAppInBackground = false;
+            mAppInBackground = true;
             startNearestBeaconDisplayTimer();
             displayRegionEvents();
         }
