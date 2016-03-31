@@ -423,7 +423,7 @@ if (Meteor.isCordova) {
             // Clear element.
             $('#beacon').empty();
 
-            if (mNearestBeacon.accuracy <= 1)
+            if (mNearestBeacon.accuracy <= 3)
             {
                 cordova.plugins.notification.local.schedule({
                     id: 1,
@@ -431,7 +431,7 @@ if (Meteor.isCordova) {
                     text: 'Yakınlarında bir tarihi eser yakaladım, sen farketmediysen hemen tıkla!'
                 });
 
-                navigator.vibrate(1000);
+               // navigator.vibrate(1000);
             }
 
 
