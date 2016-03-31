@@ -24,8 +24,8 @@
       <file leaf-file-name="museum.social.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/museum.social.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6873065">
-              <caret line="124" column="44" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.628483">
+              <caret line="435" column="91" selection-start-line="435" selection-start-column="91" selection-end-line="435" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -299,12 +299,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/museum.social.js</url>
-          <line>423</line>
+          <line>422</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/museum.social.js</url>
-          <line>433</line>
+          <line>432</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -664,8 +664,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/museum.social.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6873065">
-          <caret line="124" column="44" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.628483">
+          <caret line="435" column="91" selection-start-line="435" selection-start-column="91" selection-end-line="435" selection-end-column="91" />
           <folding />
         </state>
       </provider>
