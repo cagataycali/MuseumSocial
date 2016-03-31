@@ -39,8 +39,11 @@ Fotograflar.helpers({
 });
 
 
-
 if (Meteor.isClient) {
+
+
+//todo :test cordova
+    Session.set("Test","test");
 
 
     // Set default page id is one!
@@ -162,6 +165,7 @@ if (Meteor.isServer) {
 }
 
 if (Meteor.isCordova) {
+
     var app = (function()
     {
         // Application object.
@@ -194,24 +198,14 @@ if (Meteor.isCordova) {
         // Here monitored regions are defined.
         // TODO: Update with uuid/major/minor for your beacons.
         // You can add as many beacons as you want to use.
-
-        //var mRegions = Session.get('beacons');
         var mRegions =
             [
                 {
-                    id: 'cagatay',
+                    id: 'heykel',
                     uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
                     major: 5,
                     minor: 1000
-                },
-                {
-                    id: 'kemal',
-                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
-                    major: 5,
-                    minor: 1000
                 }
-
-
             ];
 
         // Region data is defined here. Mapping used is from
@@ -312,8 +306,7 @@ if (Meteor.isCordova) {
                 region.id,
                 region.uuid,
                 region.major,
-                region.minor
-            );
+                region.minor);
 
             // Start ranging.
             cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
@@ -384,40 +377,37 @@ if (Meteor.isCordova) {
         {
             if (!mNearestBeacon) { return; }
 
+            // Clear element.
+            $('#beacon').empty();
 
             if (mNearestBeacon.accuracy <= 1)
             {
-                //Alert
                 cordova.plugins.notification.local.schedule({
                     id: 1,
                     title: 'Miss gibi tarih kokuyor!',
-                    text: 'Yakınlarında bir tarihi eser yakaladım, sen farketmediysen hemen tıkla!',
-                    sound: isAndroid ? 'file://sound.mp3' : 'file://beep.caf'
+                    text: 'Yakınlarında bir tarihi eser yakaladım, sen farketmediysen hemen tıkla!'
                 });
 
-                //navigator.vibrate(1000);
+                navigator.vibrate(1000);
             }
 
 
             // Update element.
-            //var element = $(
-            //    '<li>'
-            //    +	'<strong>Nearest Beacon</strong><br />'
-            //    +	'UUID: ' + mNearestBeacon.uuid + '<br />'
-            //    +	'Major: ' + mNearestBeacon.major + '<br />'
-            //    +	'Minor: ' + mNearestBeacon.minor + '<br />'
-            //    +	'Proximity: ' + mNearestBeacon.proximity + '<br />'
-            //    +	'Distance: ' + mNearestBeacon.accuracy + '<br />'
-            //    +	'RSSI: ' + mNearestBeacon.rssi + '<br />'
-            //    + '</li>'
-            //);
+            var element = $(
+                '<li>'
+                +	'<strong>Nearest Beacon</strong><br />'
+                +	'UUID: ' + mNearestBeacon.uuid + '<br />'
+                +	'Major: ' + mNearestBeacon.major + '<br />'
+                +	'Minor: ' + mNearestBeacon.minor + '<br />'
+                +	'Proximity: ' + mNearestBeacon.proximity + '<br />'
+                +	'Distance: ' + mNearestBeacon.accuracy + '<br />'
+                +	'RSSI: ' + mNearestBeacon.rssi + '<br />'
+                + '</li>'
+            );
 
-            var element = {
-                uuid:mNearestBeacon.uuid,
-                distance: mNearestBeacon.accuracy
-            };
+           // $('#beacon').append(element);
 
-            Session.set('mNearestBeacon',element);
+            $('.beacon').append(mNearestBeacon.accuracy);
         }
 
         function displayRecentRegionEvent()
@@ -446,17 +436,13 @@ if (Meteor.isCordova) {
             {
                 var event = mRegionEvents[i];
                 var title = getEventDisplayString(event);
-                //var element = $(
-                //    '<li>'
-                //    + '<strong>' + title + '</strong>'
-                //    + '</li>'
-                //);
-                var element = {
-                    title:title
-                };
+                var element = $(
+                    '<li>'
+                    + '<strong>' + title + '</strong>'
+                    + '</li>'
+                );
+                $('#events').append(element);
             }
-
-            //todo tüm beaconlar listelenirken
 
             // If the list is empty display a help text.
             if (mRegionEvents.length <= 0)
@@ -468,8 +454,7 @@ if (Meteor.isCordova) {
                     + '</strong>'
                     + '</li>'
                 );
-
-               //todo : beacon bekleniyor yazısı eklenecek.
+                $('#events').append(element);
             }
         }
 
