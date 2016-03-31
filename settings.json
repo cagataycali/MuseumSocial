@@ -1,0 +1,7 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://cagataycali:kalkandere123@ds011800.mlab.com:11800/museum",
+    }
+  }
+}
