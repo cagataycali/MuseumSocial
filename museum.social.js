@@ -111,8 +111,16 @@ if (Meteor.isClient) {
     },
     'beaconlar': function () {
         return Session.get('mNearestBeacon');
-    }
+    },
+      'beacon': function () {
+          var uuid = Session.get('currentBeacon');
+          return Beaconlar.findOne({uuid:uuid});
+      }
   });
+
+    Template.main.helpers({
+
+    });
 
 
   Template.info.helpers({
@@ -407,7 +415,21 @@ if (Meteor.isCordova) {
 
            // $('#beacon').append(element);
 
-            $('.beacon').append(mNearestBeacon.accuracy);
+            /* Template içerisine veri basmaya çalışıyoruz! */
+            Template.main.helpers({
+                'beacon': function () {
+                    return Beaconlar.findOne({uuid:mNearestBeacon.uuid});
+                }
+            });
+
+            /* Session değerine beacon id değeri basmayı deneyelim */
+            Session.set('currentBeacon',mNearestBeacon.uuid);
+
+            /* Veriyi direkt basmayı deneyelim */
+
+
+            $('.beacon').append(mNearestBeacon.accuracy +"-");
+            //$('.beacon').append(mNearestBeacon.accuracy +"-" +Beaconlar.findOne({uuid:mNearestBeacon.uuid}).eser().baslik+"<br>");
         }
 
         function displayRecentRegionEvent()
