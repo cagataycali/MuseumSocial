@@ -1,1 +1,3 @@
 com.unarin.cordova.beacon@https://github.com/petermetz/cordova-plugin-ibeacon.git#0bba4958766e95dd94db005798f33d0b1793153d
+cordova-plugin-vibration@https://github.com/apache/cordova-plugin-vibration.git#db41c781874962e4c5141606e5c5a124fbbc6065
+de.appplant.cordova.plugin.local-notification@https://github.com/katzer/cordova-plugin-local-notifications.git#3e611de2eb02fe12781ca72a5225fb3ea2fec13a

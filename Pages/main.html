@@ -5,12 +5,14 @@
     <!--todo enlem boylam-->
     <!--todo beaconlarının uuid değerlerine göre benim konumum hangisine 1 mt'den yakınsa mt yerine orası gelecek, uzaklık diye bir field olup sessionda tutulabilir-->
     <!--todo : bu eser direkt olarak eserlerin hepsinden gelmeycek, yakınımdaki beaconun eserid değeri direkt olarak bu eseri bana görüntületecek.-->
+    {{>beacon}}
+
     {{#each eserler}}
 
         <ul>
             <li id="2" data-id="{{_id}}" class="2 tab-link">
                 <a href="#" class="item-link item-content">
-                    <div class="item-media"><img src="{{url}}" width="90"></div>
+                    <div class="item-media"><img src="{{url}}" width="90" height="90"></div>
                     <div class="item-inner">
                         <div class="item-title-row">
                             <div class="item-title">{{baslik}} </div>

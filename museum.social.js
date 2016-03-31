@@ -45,6 +45,8 @@ if (Meteor.isClient) {
   // Set default page id is one!
   Session.set('pageId',1);
   Session.set('eserId',0);
+  Session.set('beacon',null);
+
 
 
 // Initialize app
@@ -69,6 +71,13 @@ if (Meteor.isClient) {
     }
   });
 
+   Template.beacon.helpers({
+
+     'beaconlar': function () {
+       return Session.get('beacon');
+        }
+    });
+
   Template.info.helpers({
     'eser': function () {
       // Eser ıd değerini sessiondan alalım
@@ -90,7 +99,7 @@ if (Meteor.isClient) {
     if ( eserId == null)
     {
       //console.log("eser id boş");
-      Session.set('eserId',0);
+      //Session.set('eserId',0);
     }
     else
     {
@@ -118,8 +127,7 @@ if (Meteor.isServer) {
   console.log("Merhaba server!");
 }
 
-if (Meteor.isCordova)
-{
+if (Meteor.isCordova) {
     var app = (function()
     {
         // Application object.
@@ -155,11 +163,19 @@ if (Meteor.isCordova)
         var mRegions =
             [
                 {
-                    id: 'heykel',
+                    id: 'cagatay',
                     uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
                     major: 5,
                     minor: 1000
+                },
+                {
+                    id: 'kemal',
+                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
+                    major: 5,
+                    minor: 1000
                 }
+
+
             ];
 
         // Region data is defined here. Mapping used is from
@@ -339,32 +355,33 @@ if (Meteor.isCordova)
                 //Alert
                 cordova.plugins.notification.local.schedule({
                     id: 1,
-                    title: 'Beacon in range',
-                    text: 'Detected a beacon, tap here to open app.'
+                    title: 'Miss gibi tarih kokuyor!',
+                    text: 'Yakınlarında bir tarihi eser yakaladım, sen farketmediysen hemen tıkla!'
                 });
 
-                navigator.vibrate(3000);
+                navigator.vibrate(1000);
             }
 
 
             // Update element.
-            var element = $(
-                '<li>'
-                +	'<strong>Nearest Beacon</strong><br />'
-                +	'UUID: ' + mNearestBeacon.uuid + '<br />'
-                +	'Major: ' + mNearestBeacon.major + '<br />'
-                +	'Minor: ' + mNearestBeacon.minor + '<br />'
-                +	'Proximity: ' + mNearestBeacon.proximity + '<br />'
-                +	'Distance: ' + mNearestBeacon.accuracy + '<br />'
-                +	'RSSI: ' + mNearestBeacon.rssi + '<br />'
-                + '</li>'
-            );
-            Template.beacon.helpers({
+            //var element = $(
+            //    '<li>'
+            //    +	'<strong>Nearest Beacon</strong><br />'
+            //    +	'UUID: ' + mNearestBeacon.uuid + '<br />'
+            //    +	'Major: ' + mNearestBeacon.major + '<br />'
+            //    +	'Minor: ' + mNearestBeacon.minor + '<br />'
+            //    +	'Proximity: ' + mNearestBeacon.proximity + '<br />'
+            //    +	'Distance: ' + mNearestBeacon.accuracy + '<br />'
+            //    +	'RSSI: ' + mNearestBeacon.rssi + '<br />'
+            //    + '</li>'
+            //);
 
-                'beaconlar': function () {
-                    return element;
-                }
-            });
+            var element = {
+                uuid:mNearestBeacon.uuid,
+                distance: mNearestBeacon.accuracy
+            };
+
+            Session.set('beacon',element);
         }
 
         function displayRecentRegionEvent()
@@ -393,18 +410,14 @@ if (Meteor.isCordova)
             {
                 var event = mRegionEvents[i];
                 var title = getEventDisplayString(event);
-                var element = $(
-                    '<li>'
-                    + '<strong>' + title + '</strong>'
-                    + '</li>'
-                );
-
-                Template.beacon.helpers({
-
-                    'beaconlar': function () {
-                        return element;
-                    }
-                });
+                //var element = $(
+                //    '<li>'
+                //    + '<strong>' + title + '</strong>'
+                //    + '</li>'
+                //);
+                var element = {
+                    title:title
+                };
             }
 
             // If the list is empty display a help text.
