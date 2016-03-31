@@ -244,7 +244,7 @@ if (Meteor.isCordova) {
                 },
                 {
                     id: 'heykel2',
-                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
+                    uuid: '163EB541-B100-4BA5-8652-EB0C513FB0F4',
                     major: 5,
                     minor: 1000
                 }
