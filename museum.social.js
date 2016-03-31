@@ -42,10 +42,47 @@ Fotograflar.helpers({
 
 if (Meteor.isClient) {
 
-  // Set default page id is one!
-  Session.set('pageId',1);
-  Session.set('eserId',0);
-  Session.set('beacon',null);
+
+    // Set default page id is one!
+    Session.set('pageId',1);
+    Session.set('eserId',0);
+
+    processed_data = [];
+
+    Deps.autorun(function (c) {
+        console.log('run');
+        var cursor = Beaconlar.find();
+        if (!cursor.count()) return;
+
+        cursor.forEach(function (row) {
+            processed_data.push(
+                {
+                    id: row.eserId,
+                    uuid: row.uuid,
+                    major: 5,
+                    minor: 1000
+                }
+            );
+
+        });
+        //console.log(processed_data);
+
+        // Own data
+        //processed_data.push(
+        //    {
+        //        id: 'cagatay',
+        //        uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
+        //        major: 5,
+        //        minor: 1000
+        //    }
+        //);
+
+        // Save beacons in session
+        Session.set('beacons',processed_data);
+        c.stop();
+    });
+
+    //console.log(Session.get('beacons'));
 
 
 
@@ -68,15 +105,12 @@ if (Meteor.isClient) {
   Template.main.helpers({
     'eserler': function () {
       return TarihiEser.find();
+    },
+    'beaconlar': function () {
+        return Session.get('mNearestBeacon');
     }
   });
 
-   Template.beacon.helpers({
-
-     'beaconlar': function () {
-       return Session.get('beacon');
-        }
-    });
 
   Template.info.helpers({
     'eser': function () {
@@ -160,23 +194,25 @@ if (Meteor.isCordova) {
         // Here monitored regions are defined.
         // TODO: Update with uuid/major/minor for your beacons.
         // You can add as many beacons as you want to use.
-        var mRegions =
-            [
-                {
-                    id: 'cagatay',
-                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
-                    major: 5,
-                    minor: 1000
-                },
-                {
-                    id: 'kemal',
-                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
-                    major: 5,
-                    minor: 1000
-                }
 
-
-            ];
+        var mRegions = Session.get('beacons');
+        //var mRegions =
+        //    [
+        //        {
+        //            id: 'cagatay',
+        //            uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
+        //            major: 5,
+        //            minor: 1000
+        //        },
+        //        {
+        //            id: 'kemal',
+        //            uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
+        //            major: 5,
+        //            minor: 1000
+        //        }
+        //
+        //
+        //    ];
 
         // Region data is defined here. Mapping used is from
         // region id to a string. You can adapt this to your
@@ -276,7 +312,8 @@ if (Meteor.isCordova) {
                 region.id,
                 region.uuid,
                 region.major,
-                region.minor);
+                region.minor
+            );
 
             // Start ranging.
             cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
@@ -347,8 +384,6 @@ if (Meteor.isCordova) {
         {
             if (!mNearestBeacon) { return; }
 
-            // Clear element.
-            $('#beacon').empty();
 
             if (mNearestBeacon.accuracy <= 1)
             {
@@ -356,10 +391,11 @@ if (Meteor.isCordova) {
                 cordova.plugins.notification.local.schedule({
                     id: 1,
                     title: 'Miss gibi tarih kokuyor!',
-                    text: 'Yakınlarında bir tarihi eser yakaladım, sen farketmediysen hemen tıkla!'
+                    text: 'Yakınlarında bir tarihi eser yakaladım, sen farketmediysen hemen tıkla!',
+                    sound: isAndroid ? 'file://sound.mp3' : 'file://beep.caf'
                 });
 
-                navigator.vibrate(1000);
+                //navigator.vibrate(1000);
             }
 
 
@@ -381,7 +417,7 @@ if (Meteor.isCordova) {
                 distance: mNearestBeacon.accuracy
             };
 
-            Session.set('beacon',element);
+            Session.set('mNearestBeacon',element);
         }
 
         function displayRecentRegionEvent()
@@ -420,6 +456,8 @@ if (Meteor.isCordova) {
                 };
             }
 
+            //todo tüm beaconlar listelenirken
+
             // If the list is empty display a help text.
             if (mRegionEvents.length <= 0)
             {
@@ -431,12 +469,7 @@ if (Meteor.isCordova) {
                     + '</li>'
                 );
 
-                Template.beacon.helpers({
-                    'beaconlar': function () {
-                        return element;
-                    }
-                });
-
+               //todo : beacon bekleniyor yazısı eklenecek.
             }
         }
 

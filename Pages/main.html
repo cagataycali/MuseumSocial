@@ -5,7 +5,13 @@
     <!--todo enlem boylam-->
     <!--todo beaconlarının uuid değerlerine göre benim konumum hangisine 1 mt'den yakınsa mt yerine orası gelecek, uzaklık diye bir field olup sessionda tutulabilir-->
     <!--todo : bu eser direkt olarak eserlerin hepsinden gelmeycek, yakınımdaki beaconun eserid değeri direkt olarak bu eseri bana görüntületecek.-->
-    {{>beacon}}
+
+    <hr>Beacon
+    {{#each beaconlar}}
+        {{uuid}}  {{distance}}
+    {{/each}}
+    <hr>Beacon end
+
 
     {{#each eserler}}
 
