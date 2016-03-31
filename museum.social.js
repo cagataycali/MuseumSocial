@@ -292,7 +292,7 @@ if (Meteor.isCordova) {
 
         function startNearestBeaconDisplayTimer()
         {
-            mNearestBeaconDisplayTimer = setInterval(displayNearestBeacon, 500);
+            mNearestBeaconDisplayTimer = setInterval(displayNearestBeacon, 100);
         }
 
         function stopNearestBeaconDisplayTimer()
@@ -434,6 +434,7 @@ if (Meteor.isCordova) {
 
                // navigator.vibrate(1000);
             }
+
 
 
             // Update element.
