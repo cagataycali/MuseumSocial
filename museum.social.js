@@ -134,10 +134,7 @@ if (Meteor.isClient) {
         var cursor = Beaconlar.findOne({uuid:uuid});
         if (!cursor.count()) return;
 
-        cursor.forEach(function (row) {
-            Session.set('eserId',row.eserId);
-        });
-
+        Session.set('eserId',cursor.eserId);
         Session.set('pageId',2);
 
     });
