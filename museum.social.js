@@ -42,10 +42,6 @@ Fotograflar.helpers({
 if (Meteor.isClient) {
 
 
-//todo :test cordova
-    Session.set("Test","test");
-
-
     // Set default page id is one!
     Session.set('pageId',1);
     Session.set('eserId',0);
@@ -128,16 +124,6 @@ if (Meteor.isClient) {
     //
     //
     //Session.set('eserId',eserId);
-    //
-
-    Deps.autorun(function (c) {
-        var cursor = Beaconlar.findOne({uuid:uuid});
-        if (!cursor.count()) return;
-
-        Session.set('eserId',cursor.eserId);
-        Session.set('pageId',2);
-
-    });
 
 
   Template.info.helpers({
@@ -148,6 +134,15 @@ if (Meteor.isClient) {
       return TarihiEser.findOne(eserId);
     }
   });
+
+    $(document).on('click','.eser', function () {
+
+        var eser_id = this.attr('id');
+
+        Session.set('eserId',eser_id);
+        Session.set('pageId',2);
+
+    });
 
 
   // Tab links
