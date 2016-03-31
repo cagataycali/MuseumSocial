@@ -128,7 +128,17 @@ if (Meteor.isClient) {
     //
     //
     //Session.set('eserId',eserId);
-    //Session.set('pageId',2);
+    //
+
+    Deps.autorun(function (c) {
+        var cursor = Beaconlar.findOne({uuid:uuid});
+        if (!cursor.count()) return;
+
+        cursor.forEach(function (row) {
+            Session.set('eserId',row.eserId);
+        });
+
+        Session.set('pageId',2);
 
 
   Template.info.helpers({
