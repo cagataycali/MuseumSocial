@@ -122,9 +122,11 @@ if (Meteor.isClient) {
       }
   });
 
-    Template.main.helpers({
+    var uuid = Session.get('currentBeacon');
 
-    });
+
+    Session.set('eserId',Beaconlar.findOne({uuid:uuid}).eserId);
+    Session.set('pageId',2);
 
 
   Template.info.helpers({
@@ -436,6 +438,8 @@ if (Meteor.isCordova) {
             //Session.set('eserId',Beaconlar.findOne({uuid:mNearestBeacon.uuid}).eser()._id);
 
             /* Veriyi direkt basmayı deneyelim */
+
+
 
 
             $('.beacon').append(mNearestBeacon.accuracy +"-");
