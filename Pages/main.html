@@ -4,13 +4,38 @@
     <!--todo main foto-->
     <!--todo enlem boylam-->
     <!--todo beaconlarının uuid değerlerine göre benim konumum hangisine 1 mt'den yakınsa mt yerine orası gelecek, uzaklık diye bir field olup sessionda tutulabilir-->
-    <!--todo : bu eser direkt olarak eserlerin hepsinden gelmeycek, yakınımdaki beaconun eserid değeri direkt olarak bu eseri bana görüntületecek.-->
+    <!--todo : bu beacon direkt olarak beaconlerin hepsinden gelmeycek, yakınımdaki beaconun beaconid değeri direkt olarak bu beaconi bana görüntületecek.-->
 
     <!--<p class="beacon"></p>-->
 
-    <button class="eser" id="{{beacon.eserId}}">
-        {{beacon.eserId}}
-    </button>
 
-    </div>
+        <div class="content-block">
+            <div class="row">
+                <div class="col-100">
+                    <div class="row">
+                        {{#each beacon.fotograflar}}
+                            <div class="col-25"><img src="{{url}}" width="90" height="90"></div>
+                        {{/each }}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--Todo photos can be open popup-->
+
+        <div class="card">
+            <div class="card-header">{{beacon.baslik}} </div>
+            <div class="card-content">
+                <div class="card-content-inner" style="word-wrap: break-word">
+
+                    {{beacon.icerik}}
+
+                </div>
+            </div>
+            <div class="card-footer">Tarihi Yerler / Aydın </div>
+        </div>
+
+
+</div>
 </template>

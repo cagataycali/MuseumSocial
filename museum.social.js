@@ -9,6 +9,7 @@
 TarihiEser = new Mongo.Collection('TarihiEser');
 Fotograflar = new Mongo.Collection('Fotograflar');
 Beaconlar = new Mongo.Collection('Beaconlar');
+Beacon = new Mongo.Collection('Beacon');
 
 
 TarihiEser.helpers({
@@ -20,6 +21,13 @@ TarihiEser.helpers({
     return Beaconlar.find({eserId:this._id});
   }
 
+});
+
+
+Beacon.helpers({
+    fotograflar: function () {
+        return Fotograflar.find({beaconId:this._id});
+    }
 });
 
 Beaconlar.helpers({
@@ -34,9 +42,15 @@ Fotograflar.helpers({
 
   eser: function () {
     return TarihiEser.findOne({_id:eserId});
+  },
+  beacon: function () {
+      return Beacon.findOne({_id:beaconId});
   }
 
 });
+
+
+
 
 
 if (Meteor.isClient) {
@@ -110,7 +124,7 @@ if (Meteor.isClient) {
     },
       'beacon': function () {
           var uuid = Session.get('currentBeacon');
-          return Beaconlar.findOne({uuid:uuid});
+          return Beacon.findOne({uuid:uuid});
       },
       'eser': function () {
           var uuid = Session.get('currentBeacon');
