@@ -241,6 +241,12 @@ if (Meteor.isCordova) {
                     uuid: 'B0702880-A295-A8AB-F734-031A98A512DE',
                     major: 5,
                     minor: 1000
+                },
+                {
+                    id: 'heykel2',
+                    uuid: 'B0702880-A295-A8AB-F734-031A98A512DC',
+                    major: 5,
+                    minor: 1000
                 }
             ];
 
@@ -250,7 +256,8 @@ if (Meteor.isCordova) {
         // TODO: Update with major/minor for your own beacons.
         var mRegionData =
         {
-            'heykel': 'Düşünen adam'
+            'heykel': 'Düşünen adam',
+            'heykel2': 'Düşünen adam2'
         };
 
         app.initialize = function()
