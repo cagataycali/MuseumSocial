@@ -115,6 +115,10 @@ if (Meteor.isClient) {
       'beacon': function () {
           var uuid = Session.get('currentBeacon');
           return Beaconlar.findOne({uuid:uuid});
+      },
+      'eser': function () {
+          var uuid = Session.get('currentBeacon');
+          return Beaconlar.findOne({uuid:uuid}).eser();
       }
   });
 
@@ -419,6 +423,9 @@ if (Meteor.isCordova) {
             Template.main.helpers({
                 'beacon': function () {
                     return Beaconlar.findOne({uuid:mNearestBeacon.uuid});
+                },
+                'eser': function () {
+                    return Beaconlar.findOne({uuid:mNearestBeacon.uuid}).eser();
                 }
             });
 
